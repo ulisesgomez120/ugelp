@@ -1,9 +1,14 @@
 import React from "react";
 import "./App.css";
 import { yelp_key } from "./private";
+import Map from "./controllers/Map/Map";
 function App() {
-  console.log(yelp_key);
-  return <div className="flex-container">Yelp!</div>;
+  return (
+    <div className="flex-container">
+      <div>Yelp!</div>
+      <Map />
+    </div>
+  );
 }
 
 export default App;
