@@ -8,18 +8,24 @@ export default class Companies extends Component {
   componentDidMount() {}
   render() {
     return (
-      <div>
+      <section className="companies">
         <form>
-          <input type="text" name="term-search" id="term-search"></input>
+          <input
+            type="text"
+            name="term-search"
+            id="term-search"
+            placeholder="Food"
+          ></input>
           <input
             type="text"
             name="location-search"
             id="location-search"
+            placeholder="Irvine, CA"
           ></input>
           <button type="submit">Search</button>
         </form>
-        <div>all Companies</div>
-      </div>
+        <Result />
+      </section>
     );
   }
 }
