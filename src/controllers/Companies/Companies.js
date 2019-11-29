@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Result from "../../views/Result/Result";
+import YelpSearch from "../Forms/YelpSearch";
 
 export default class Companies extends Component {
   state = {
@@ -47,21 +48,7 @@ export default class Companies extends Component {
     }
     return (
       <section className="companies">
-        <form>
-          <input
-            type="text"
-            name="term-search"
-            id="term-search"
-            placeholder="Food"
-          ></input>
-          <input
-            type="text"
-            name="location-search"
-            id="location-search"
-            placeholder="Irvine, CA"
-          ></input>
-          <button type="submit">Search</button>
-        </form>
+        <YelpSearch />
         {resultsJsx ? resultsJsx : <h1>Loading...</h1>}
       </section>
     );
