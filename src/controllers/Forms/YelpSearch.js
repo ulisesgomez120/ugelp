@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 const YelpSearch = props => {
+  const [termState, updateTermState] = useState();
+  const [locationState, updateLocationState] = useState();
+
   return (
     <form>
       <input
