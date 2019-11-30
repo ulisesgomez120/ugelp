@@ -8,8 +8,7 @@ class App extends Component {
   state = {
     results: []
   };
-  api_key =
-    "Bearer S7elWyjPsvQyJwo5NKCJ0nhpGyY7K7sMOIYaOb8XeudhWIVDYJHvFNJ3V-VbvKQW2vvOgg3Fa7KdmuFrbbmfL1Funp9s8fbhLH7uY2UyuueF4Tpmuh8_bRHjcYjQXXYx";
+
   componentDidMount() {
     function initMap() {
       new google.maps.Map(document.getElementById("map"), {
@@ -33,8 +32,6 @@ class App extends Component {
     //     throw new Error(err);
     //   });
   }
-  googlekey =
-    "https://maps.googleapis.com/maps/api/js?key=AIzaSyD2WJgyx0aRsYBeYAoOyrR9vHH79JHkLdc&v=3.exp&libraries=geometry,drawing,places";
 
   render() {
     console.log(process.env);
