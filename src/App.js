@@ -6,14 +6,12 @@ import ResultsContext from "./context/resultsContext";
 
 class App extends Component {
   state = {
-    results: [],
-    term: "food",
-    location: "Irvine,CA"
+    results: []
   };
 
   componentDidMount() {
     fetch(
-      `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${this.state.term}&location=${this.state.location}`,
+      `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=food&location=Irvine,CA`,
       {
         headers: {
           Authorization: process.env.REACT_APP_YELP_KEY
@@ -30,10 +28,24 @@ class App extends Component {
   }
 
   searchHandler = event => {
-    event.persist();
     event.preventDefault();
-    console.log(event.target[0].value);
-    console.log(event.target[1].value);
+    const term = event.target[0].value;
+    const location = event.target[1].value;
+    fetch(
+      `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}`,
+      {
+        headers: {
+          Authorization: process.env.REACT_APP_YELP_KEY
+        }
+      }
+    )
+      .then(res => res.json())
+      .then(jsonRes => {
+        this.setState({ results: jsonRes["businesses"] });
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
   };
   render() {
     return (
