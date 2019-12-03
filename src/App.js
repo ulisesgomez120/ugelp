@@ -53,13 +53,11 @@ class App extends Component {
         <ResultsContext.Provider
           value={{
             results: this.state.results,
-            term: this.state.term,
-            location: this.state.location,
             search: this.searchHandler
           }}
         >
           <Companies />
-          {/* <Map /> */}
+          <Map />
         </ResultsContext.Provider>
       </div>
     );

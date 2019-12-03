@@ -8,7 +8,6 @@ export default class Companies extends Component {
 
   render() {
     let resultsJsx;
-    console.log(this.context.results);
     if (this.context.results.length !== 0) {
       resultsJsx = this.context.results.map(business => {
         return (
