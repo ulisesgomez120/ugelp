@@ -6,7 +6,7 @@ export default class YelpSearch extends Component {
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.context.search}>
         <input
           type="text"
           name="term-search"

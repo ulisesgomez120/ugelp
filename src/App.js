@@ -29,15 +29,21 @@ class App extends Component {
       });
   }
 
+  searchHandler = event => {
+    event.persist();
+    event.preventDefault();
+    console.log(event.target[0].value);
+    console.log(event.target[1].value);
+  };
   render() {
-    console.log(process.env);
     return (
       <div className="flex-container">
         <ResultsContext.Provider
           value={{
             results: this.state.results,
             term: this.state.term,
-            location: this.state.location
+            location: this.state.location,
+            search: this.searchHandler
           }}
         >
           <Companies />
