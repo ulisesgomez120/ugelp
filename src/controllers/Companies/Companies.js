@@ -7,7 +7,6 @@ export default class Companies extends Component {
   static contextType = ResultsContext;
 
   render() {
-    console.log(this.context.results);
     let resultsJsx;
     if (this.context.results.length !== 0) {
       resultsJsx = this.context.results.map(business => {

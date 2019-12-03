@@ -1,26 +1,26 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
+import ResultsContext from "../../context/resultsContext";
 
-const YelpSearch = props => {
-  const [termState, updateTermState] = useState();
-  const [locationState, updateLocationState] = useState();
+export default class YelpSearch extends Component {
+  static contextType = ResultsContext;
 
-  return (
-    <form>
-      <input
-        type="text"
-        name="term-search"
-        id="term-search"
-        placeholder="Food"
-      ></input>
-      <input
-        type="text"
-        name="location-search"
-        id="location-search"
-        placeholder="Irvine, CA"
-      ></input>
-      <button type="submit">Search</button>
-    </form>
-  );
-};
-
-export default YelpSearch;
+  render() {
+    return (
+      <form>
+        <input
+          type="text"
+          name="term-search"
+          id="term-search"
+          placeholder="Food"
+        ></input>
+        <input
+          type="text"
+          name="location-search"
+          id="location-search"
+          placeholder="Irvine, CA"
+        ></input>
+        <button type="submit">Search</button>
+      </form>
+    );
+  }
+}

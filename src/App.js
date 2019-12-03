@@ -6,12 +6,14 @@ import ResultsContext from "./context/resultsContext";
 
 class App extends Component {
   state = {
-    results: []
+    results: [],
+    term: "food",
+    location: "Irvine,CA"
   };
 
   componentDidMount() {
     fetch(
-      "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=food&location=Irvine,CA",
+      `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${this.state.term}&location=${this.state.location}`,
       {
         headers: {
           Authorization: process.env.REACT_APP_YELP_KEY
@@ -31,9 +33,15 @@ class App extends Component {
     console.log(process.env);
     return (
       <div className="flex-container">
-        <ResultsContext.Provider value={{ results: this.state.results }}>
+        <ResultsContext.Provider
+          value={{
+            results: this.state.results,
+            term: this.state.term,
+            location: this.state.location
+          }}
+        >
           <Companies />
-          <Map />
+          {/* <Map /> */}
         </ResultsContext.Provider>
       </div>
     );
