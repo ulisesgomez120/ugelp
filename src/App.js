@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Map from "./views/Map/Map";
+import Map from "./controllers/Map/Map";
 import Companies from "./controllers/Companies/Companies";
 import ResultsContext from "./context/resultsContext";
 
