@@ -21,6 +21,7 @@ class GoogleMap extends Component {
         );
       });
     }
+    console.log(markers);
     return (
       <GoogleMapReact
         bootstrapURLKeys={{
