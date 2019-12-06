@@ -23,7 +23,7 @@ class App extends Component {
         this.setState({ results: jsonRes["businesses"] });
       })
       .catch(err => {
-        throw new Error(err);
+        console.log(err);
       });
   }
 
