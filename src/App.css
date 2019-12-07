@@ -20,16 +20,11 @@ body {
 }
 /* marker.js */
 .marker {
-  /* position: absolute;
-  top: 50%;
-  left: 50%; */
   width: 18px;
   height: 18px;
-  background-color: #000;
-  border: 2px solid #fff;
+  background-color: rgb(56, 95, 201);
+  border: 2px solid rgb(211, 126, 28);
   border-radius: 100%;
-  user-select: none;
-  /* transform: translate(-50%, -50%); */
 }
 /* result.js  */
 .result-card {
