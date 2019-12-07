@@ -12,6 +12,7 @@ export default class Companies extends Component {
       resultsJsx = this.context.results.map(business => {
         return (
           <Result
+            click={() => this.context.modalHandler(business.id)}
             key={business.id}
             name={business.name}
             imgUrl={business.image_url}

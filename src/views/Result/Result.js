@@ -3,7 +3,7 @@ import React from "react";
 const Result = props => {
   const cats = props.categories.map(cat => cat.title);
   return (
-    <article className="result-card">
+    <article className="result-card" onClick={props.click}>
       <div className="company-details">
         <img src={props.imgUrl} alt="a business" />
         <div>

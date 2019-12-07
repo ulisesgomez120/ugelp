@@ -3,10 +3,13 @@ import "./App.css";
 import Map from "./controllers/Map/Map";
 import Companies from "./controllers/Companies/Companies";
 import ResultsContext from "./context/resultsContext";
-
+import CompanyModal from "./views/CompanyModal/CompanyModal";
 class App extends Component {
   state = {
-    results: []
+    results: [],
+    showModal: false,
+    singleBusiness: undefined,
+    singleBusinessReviews: undefined
   };
 
   componentDidMount() {
@@ -26,6 +29,43 @@ class App extends Component {
         console.log(err);
       });
   }
+  modalHandler = async id => {
+    const singleBusiness = fetch(
+      `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${id}`,
+      {
+        headers: {
+          Authorization: process.env.REACT_APP_YELP_KEY
+        }
+      }
+    )
+      .then(res => res.json())
+      .catch(err => {
+        console.log(err);
+      });
+    const singleBusinessReviews = fetch(
+      `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${id}/reviews`,
+      {
+        headers: {
+          Authorization: process.env.REACT_APP_YELP_KEY
+        }
+      }
+    )
+      .then(res => res.json())
+      .catch(err => {
+        console.log(err);
+      });
+    const completedFetches = await Promise.all([
+      singleBusiness,
+      singleBusinessReviews
+    ]).then(value => {
+      console.log(value);
+      this.setState({
+        showModal: true,
+        singleBusiness: value[0],
+        singleBusinessReviews: value[0]["reviews"]
+      });
+    });
+  };
 
   searchHandler = event => {
     event.preventDefault();
@@ -44,7 +84,7 @@ class App extends Component {
         this.setState({ results: jsonRes["businesses"] });
       })
       .catch(err => {
-        throw new Error(err);
+        console.log(err);
       });
   };
   render() {
@@ -53,9 +93,16 @@ class App extends Component {
         <ResultsContext.Provider
           value={{
             results: this.state.results,
-            search: this.searchHandler
+            search: this.searchHandler,
+            modalHandler: this.modalHandler
           }}
         >
+          {this.state.showModal ? (
+            <CompanyModal
+              business={this.state.singleBusiness}
+              reviews={this.state.singleBusinessReviews}
+            />
+          ) : null}
           <Companies />
           <Map />
         </ResultsContext.Provider>

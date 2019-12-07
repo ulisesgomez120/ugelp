@@ -7,7 +7,6 @@ class GoogleMap extends Component {
   static contextType = ResultsContext;
 
   render() {
-    // console.log(this.context.results, company.coordinates.latitude,company.coordinates.longitude, company.name);
     let markers;
     if (this.context.results.length !== 0) {
       markers = this.context.results.map(business => {
@@ -21,7 +20,6 @@ class GoogleMap extends Component {
         );
       });
     }
-    console.log(markers);
     return (
       <GoogleMapReact
         bootstrapURLKeys={{
