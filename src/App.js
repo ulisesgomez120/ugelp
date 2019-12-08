@@ -54,15 +54,12 @@ class App extends Component {
       .catch(err => {
         console.log(err);
       });
-    const completedFetches = await Promise.all([
-      singleBusiness,
-      singleBusinessReviews
-    ]).then(value => {
+    await Promise.all([singleBusiness, singleBusinessReviews]).then(value => {
       console.log(value);
       this.setState({
         showModal: true,
         singleBusiness: value[0],
-        singleBusinessReviews: value[0]["reviews"]
+        singleBusinessReviews: value[1]["reviews"]
       });
     });
   };

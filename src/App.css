@@ -1,8 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 .flex-container {
   display: flex;
@@ -94,7 +97,23 @@ body {
   align-content: center;
   background-color: rgba(20, 20, 20, 0.5);
 }
-.modal-con {
+.modal-content {
+  display: grid;
   padding: 30px;
+  grid-template-columns: repeat(2, 1fr);
   background-color: #f4f4f4;
+}
+.photo-container {
+  display: flex;
+  justify-content: space-around;
+  grid-column: span 2;
+  background-color: #ddd;
+  padding: 26px;
+  border-radius: 22px;
+  flex-wrap: wrap;
+}
+.photo-container > img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
 }
