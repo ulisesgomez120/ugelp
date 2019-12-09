@@ -29,7 +29,13 @@ export default class Companies extends Component {
     return (
       <section className="companies">
         <YelpSearch />
-        {resultsJsx ? resultsJsx : <h1>Loading...</h1>}
+        {resultsJsx ? (
+          resultsJsx
+        ) : (
+          <div>
+            <img src="../" />
+          </div>
+        )}
       </section>
     );
   }
