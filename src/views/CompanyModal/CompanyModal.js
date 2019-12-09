@@ -2,7 +2,6 @@ import React from "react";
 import Review from "../Review/Review";
 
 const CompanyModal = props => {
-  console.log(props);
   const { business, reviews } = props;
   const cats = business.categories.map(cat => cat.title);
   const photos = business.photos.map((imgUrl, index) => {

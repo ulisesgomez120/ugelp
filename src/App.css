@@ -117,6 +117,7 @@ body {
 /* review */
 .review-container {
   display: flex;
+  margin-bottom: 12px;
 }
 .user-info {
   margin-right: 40px;
@@ -128,4 +129,7 @@ body {
   width: 100px;
   height: 100px;
   border-radius: 10px;
+}
+.review-content {
+  margin-top: 21px;
 }

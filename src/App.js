@@ -55,7 +55,6 @@ class App extends Component {
         console.log(err);
       });
     await Promise.all([singleBusiness, singleBusinessReviews]).then(value => {
-      console.log(value);
       this.setState({
         showModal: true,
         singleBusiness: value[0],

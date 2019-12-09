@@ -1,5 +1,5 @@
 import React from "react";
-
+import Star from "../Star/Star";
 const Review = props => {
   return (
     <div className="review-container">
@@ -7,10 +7,11 @@ const Review = props => {
         <h4>{props.name}</h4>
         <img src={props.image} />
       </div>
-      <div>
-        <span>
-          {props.rating} {props.created_on}
-        </span>
+      <div className="review-content">
+        <div>
+          <Star rating={props.rating} imgPath="../../images/" />{" "}
+          {props.created_on}
+        </div>
         <p>{props.text}</p>
       </div>
     </div>
