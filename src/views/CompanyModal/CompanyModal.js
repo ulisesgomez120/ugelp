@@ -1,6 +1,6 @@
 import React from "react";
 import Review from "../Review/Review";
-
+import Star from "../Star/Star";
 const CompanyModal = props => {
   const { business, reviews } = props;
   const cats = business.categories.map(cat => cat.title);
@@ -19,13 +19,14 @@ const CompanyModal = props => {
       />
     );
   });
+  console.log(business);
   return (
     <section className="modal">
       <div className="modal-content">
         <div>
           <h3 className="company-name">{business.name}</h3>
           <div className="rating">
-            {business.rating} out of {business.revCount}
+            <Star rating={business.rating} /> {business.revCount}
           </div>
           <p className="general-desc secondary-color">
             {business.price ? business.price + " - " : null}

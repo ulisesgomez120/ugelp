@@ -1,5 +1,5 @@
 import React from "react";
-
+import Star from "../Star/Star";
 const Result = props => {
   const cats = props.categories.map(cat => cat.title);
   return (
@@ -9,7 +9,7 @@ const Result = props => {
         <div>
           <h3 className="company-name">{props.name}</h3>
           <div className="rating">
-            {props.rating} out of {props.revCount}
+            <Star rating={props.rating} /> {props.revCount}
           </div>
           <p className="general-desc secondary-color">
             {props.price ? props.price + " - " : null}

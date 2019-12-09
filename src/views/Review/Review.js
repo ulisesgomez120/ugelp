@@ -11,8 +11,8 @@ const Review = props => {
         <img src={props.image} />
       </div>
       <div className="review-content">
-        <div>
-          <Star rating={props.rating} imgPath="../../images/" /> {date}
+        <div className="rating">
+          <Star rating={props.rating} /> <span className="date">{date}</span>
         </div>
         <p>{props.text}</p>
       </div>
