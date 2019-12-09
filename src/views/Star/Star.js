@@ -1,7 +1,6 @@
 import React from "react";
 
 const Star = props => {
-  console.log(props.rating);
   let starImg = "../../images/";
   switch (props.rating) {
     case 5:

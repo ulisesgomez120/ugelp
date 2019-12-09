@@ -9,7 +9,8 @@ const Result = props => {
         <div>
           <h3 className="company-name">{props.name}</h3>
           <div className="rating">
-            <Star rating={props.rating} /> {props.revCount}
+            <Star rating={props.rating} />{" "}
+            <span className="after-rating">{props.revCount}</span>
           </div>
           <p className="general-desc secondary-color">
             {props.price ? props.price + " - " : null}

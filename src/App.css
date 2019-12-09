@@ -30,6 +30,11 @@ body {
   border-radius: 100%;
 }
 /* result.js  */
+.loading-container {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+}
 .result-card {
   max-width: 85%;
   border: 1px solid rgba(199, 199, 199, 0.4);
@@ -72,6 +77,9 @@ body {
 .rating {
   display: flex;
   align-items: center;
+}
+.after-rating {
+  margin-left: 7px;
 }
 .company-info {
   float: right;
@@ -136,7 +144,4 @@ body {
 }
 .review-content {
   margin-top: 21px;
-}
-.rating-date > span {
-  margin-left: 7px;
 }

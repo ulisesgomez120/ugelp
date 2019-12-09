@@ -32,8 +32,8 @@ export default class Companies extends Component {
         {resultsJsx ? (
           resultsJsx
         ) : (
-          <div>
-            <img src="../" />
+          <div className="loading-container">
+            <img src="../../images/gif/loading-arrow.gif" />
           </div>
         )}
       </section>

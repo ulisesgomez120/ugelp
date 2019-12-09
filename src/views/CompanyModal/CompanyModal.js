@@ -26,7 +26,8 @@ const CompanyModal = props => {
         <div>
           <h3 className="company-name">{business.name}</h3>
           <div className="rating">
-            <Star rating={business.rating} /> {business.revCount}
+            <Star rating={business.rating} />{" "}
+            <span className="after-rating">{business.review_count}</span>
           </div>
           <p className="general-desc secondary-color">
             {business.price ? business.price + " - " : null}

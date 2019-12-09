@@ -28,6 +28,12 @@ class App extends Component {
       .catch(err => {
         console.log(err);
       });
+
+    window.onclick = event => {
+      if (event.target.className == "modal") {
+        this.setState({ showModal: false });
+      }
+    };
   }
   modalHandler = async id => {
     const singleBusiness = fetch(
