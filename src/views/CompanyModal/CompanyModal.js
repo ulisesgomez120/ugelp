@@ -1,4 +1,5 @@
 import React from "react";
+import Review from "../Review/Review";
 
 const CompanyModal = props => {
   console.log(props);
@@ -7,19 +8,20 @@ const CompanyModal = props => {
   const photos = business.photos.map((imgUrl, index) => {
     return <img key={index} src={imgUrl} alt="business" />;
   });
+  const reviewsJsx = reviews.map(rev => {
+    return (
+      <Review
+        key={rev.id}
+        text={rev.text}
+        created_on={rev.time_created}
+        rating={rev.rating}
+        name={rev.user.name}
+        image={rev.user.image_url}
+      />
+    );
+  });
   return (
-    <div className="modal">
-      {/* <div className="modal-con">
-        <h2>{business.name}</h2>
-        <p>
-          {business.rating} {business.review_count}
-        </p>
-        <p>
-          {business.price ? business.price + " - " : null}
-          {cats.join(", ")}
-        </p>
-        <div className="photo-container">{photos}</div>
-      </div> */}
+    <section className="modal">
       <div className="modal-content">
         <div>
           <h3 className="company-name">{business.name}</h3>
@@ -40,9 +42,9 @@ const CompanyModal = props => {
             {business.location.city} {business.location.zip_code}
           </p>
         </div>
-        <div className="photo-container">{photos}</div>
+        <div className="reviews">{reviewsJsx}</div>
       </div>
-    </div>
+    </section>
   );
 };
 
