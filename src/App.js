@@ -106,7 +106,7 @@ class App extends Component {
   };
   render() {
     return (
-      <div className="flex-container">
+      <div className="container">
         <ResultsContext.Provider
           value={{
             results: this.state.results,
