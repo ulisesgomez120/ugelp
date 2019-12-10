@@ -4,12 +4,18 @@ import Map from "./controllers/Map/Map";
 import Companies from "./controllers/Companies/Companies";
 import ResultsContext from "./context/resultsContext";
 import CompanyModal from "./views/CompanyModal/CompanyModal";
+import Geocode from "react-geocode";
+
+Geocode.setApiKey(process.env.REACT_APP_GOOGLE_KEY);
+
 class App extends Component {
   state = {
     results: [],
     showModal: false,
     singleBusiness: undefined,
-    singleBusinessReviews: undefined
+    singleBusinessReviews: undefined,
+    mapLat: 33.6846,
+    mapLng: -117.8265
   };
 
   componentDidMount() {
@@ -30,7 +36,7 @@ class App extends Component {
       });
 
     window.onclick = event => {
-      if (event.target.className == "modal") {
+      if (event.target.className === "modal") {
         this.setState({ showModal: false });
       }
     };
@@ -69,11 +75,16 @@ class App extends Component {
     });
   };
 
-  searchHandler = event => {
+  searchHandler = async event => {
     event.preventDefault();
     const term = event.target[0].value;
     const location = event.target[1].value;
-    fetch(
+    const geoCode = Geocode.fromAddress(location)
+      .then(res => res.results[0].geometry.location)
+      .catch(err => {
+        console.error(err);
+      });
+    const searchResults = fetch(
       `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}`,
       {
         headers: {
@@ -82,12 +93,16 @@ class App extends Component {
       }
     )
       .then(res => res.json())
-      .then(jsonRes => {
-        this.setState({ results: jsonRes["businesses"] });
-      })
       .catch(err => {
         console.log(err);
       });
+    await Promise.all([geoCode, searchResults]).then(value => {
+      this.setState({
+        results: value[1]["businesses"],
+        mapLat: value[0]["lat"],
+        mapLng: value[0]["lng"]
+      });
+    });
   };
   render() {
     return (
@@ -106,7 +121,7 @@ class App extends Component {
             />
           ) : null}
           <Companies />
-          <Map />
+          <Map lat={this.state.mapLat} lng={this.state.mapLng} />
         </ResultsContext.Provider>
       </div>
     );

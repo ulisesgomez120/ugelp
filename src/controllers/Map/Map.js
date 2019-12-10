@@ -28,6 +28,7 @@ class GoogleMap extends Component {
         }}
         defaultZoom={12}
         defaultCenter={{ lat: 33.6846, lng: -117.8265 }}
+        center={{ lat: this.props.lat, lng: this.props.lng }}
       >
         {markers}
       </GoogleMapReact>
