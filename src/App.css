@@ -11,12 +11,12 @@ body {
   width: 100vw;
   height: 100vh;
 }
-.flex-container > .companies {
+.container > .companies {
   display: inline-block;
   width: 53%;
 }
 /* map.js */
-.flex-container > div {
+.container > div {
   width: 45%;
   height: 100%;
   margin: 0px;
