@@ -19,7 +19,7 @@ const CompanyModal = props => {
       />
     );
   });
-  console.log(business);
+  console.log(reviews);
   return (
     <section className="modal">
       <div className="modal-content">

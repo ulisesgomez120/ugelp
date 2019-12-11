@@ -22,6 +22,14 @@ class GoogleMap extends Component {
     }
     return (
       <GoogleMapReact
+        style={{
+          width: "45%",
+          height: "100%",
+          margin: "0px",
+          padding: "0px",
+          display: "inline-block",
+          position: "fixed"
+        }}
         bootstrapURLKeys={{
           key: process.env.REACT_APP_GOOGLE_KEY,
           language: "en"

@@ -121,7 +121,7 @@ class App extends Component {
             />
           ) : null}
           <Companies />
-          <Map lat={this.state.mapLat} lng={this.state.mapLng} />
+          <Map id="map" lat={this.state.mapLat} lng={this.state.mapLng} />
         </ResultsContext.Provider>
       </div>
     );
