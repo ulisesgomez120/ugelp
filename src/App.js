@@ -15,7 +15,8 @@ class App extends Component {
     singleBusiness: undefined,
     singleBusinessReviews: undefined,
     mapLat: 33.6846,
-    mapLng: -117.8265
+    mapLng: -117.8265,
+    emptySearch: null
   };
 
   componentDidMount() {
@@ -79,6 +80,12 @@ class App extends Component {
     event.preventDefault();
     const term = event.target[0].value;
     const location = event.target[1].value;
+    if (term === "" || location === "") {
+      this.setState({
+        emptySearch: "Must enter a location and term to search"
+      });
+      return;
+    }
     const geoCode = Geocode.fromAddress(location)
       .then(res => res.results[0].geometry.location)
       .catch(err => {
@@ -100,7 +107,8 @@ class App extends Component {
       this.setState({
         results: value[1]["businesses"],
         mapLat: value[0]["lat"],
-        mapLng: value[0]["lng"]
+        mapLng: value[0]["lng"],
+        emptySearch: null
       });
     });
   };
@@ -120,7 +128,7 @@ class App extends Component {
               reviews={this.state.singleBusinessReviews}
             />
           ) : null}
-          <Companies />
+          <Companies emptySearch={this.state.emptySearch} />
           <Map id="map" lat={this.state.mapLat} lng={this.state.mapLng} />
         </ResultsContext.Provider>
       </div>

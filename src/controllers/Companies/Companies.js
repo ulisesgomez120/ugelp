@@ -29,6 +29,9 @@ export default class Companies extends Component {
     return (
       <section className="companies">
         <YelpSearch />
+        {this.props.emptySearch ? (
+          <p className="empty-search">{this.props.emptySearch}</p>
+        ) : null}
         {resultsJsx ? (
           resultsJsx
         ) : (
