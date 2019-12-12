@@ -7,7 +7,7 @@ const Review = props => {
     <div className="review-container">
       <div className="user-info">
         <h4>{props.name}</h4>
-        <img src={props.image} />
+        <img src={props.image} alt="user" />
       </div>
       <div className="review-content">
         <div className="rating">

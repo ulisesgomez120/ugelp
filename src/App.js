@@ -11,6 +11,8 @@ Geocode.setApiKey(process.env.REACT_APP_GOOGLE_KEY);
 class App extends Component {
   state = {
     results: [],
+    term: "food",
+    location: "Irvine,CA",
     showModal: false,
     singleBusiness: undefined,
     singleBusinessReviews: undefined,
@@ -108,13 +110,15 @@ class App extends Component {
         results: value[1]["businesses"],
         mapLat: value[0]["lat"],
         mapLng: value[0]["lng"],
-        emptySearch: null
+        emptySearch: null,
+        term: term,
+        location: location
       });
     });
   };
-  callNext20 = () => {
+  getNextResults = () => {
     fetch(
-      `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&offset=20`,
+      `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${this.state.term}&location=${this.state.location}&offset=20`,
       {
         headers: {
           Authorization: process.env.REACT_APP_YELP_KEY
@@ -139,7 +143,8 @@ class App extends Component {
           value={{
             results: this.state.results,
             search: this.searchHandler,
-            modalHandler: this.modalHandler
+            modalHandler: this.modalHandler,
+            getNextResults: this.getNextResults
           }}
         >
           {this.state.showModal ? (

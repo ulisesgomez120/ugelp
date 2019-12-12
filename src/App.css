@@ -1,20 +1,36 @@
 * {
   box-sizing: border-box;
 }
-
 html,
 body {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 .container {
   width: 100vw;
   height: 100vh;
 }
+/* companies */
 .container > .companies {
   display: inline-block;
-  width: 53%;
+  width: 58%;
 }
+.get-next-container {
+  text-align: center;
+  margin-bottom: 25px;
+}
+.get-next-btn {
+  border-radius: 4px 4px 4px 4px;
+  background-color: rgb(244, 57, 57);
+  border: none;
+  box-shadow: 0px 0 8px 1px rgba(44, 44, 44, 0.4);
+  color: white;
+  font-size: 1.1em;
+  padding: 7px 21px;
+  cursor: pointer;
+}
+/* yelpSearch */
 .companies > form {
   text-align: center;
 }
@@ -50,6 +66,14 @@ body {
 /* map */
 .container > div {
   box-shadow: 0px 0 8px 1px rgba(44, 44, 44, 0.4) !important;
+}
+@media (max-width: 1086px) {
+  .container > div {
+    width: 17% !important;
+  }
+  .container > .companies {
+    width: 80%;
+  }
 }
 /* marker */
 .marker {
@@ -96,6 +120,10 @@ body {
 }
 .result-card:hover::after {
   opacity: 1;
+}
+.result-card:focus {
+  outline: none;
+  background-color: rgba(199, 199, 199, 0.4);
 }
 .company-details {
   display: flex;
@@ -148,15 +176,24 @@ body {
   display: grid;
   padding: 30px;
   overflow: auto;
-  grid-template-columns: repeat(2, 1fr);
-  background-color: #f4f4f4;
+  grid-template-columns: max-content 1fr max-content;
+  background-color: rgb(244, 244, 244);
+}
+.company-photos {
+  display: flex;
+  justify-content: space-evenly;
+}
+.company-photos > img {
+  max-width: 130px;
+  border-radius: 4px;
 }
 .reviews {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  grid-column: span 2;
-  background-color: #ddd;
+  grid-column: span 3;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-top: 30px;
   padding: 26px;
   border-radius: 22px;
   flex-wrap: wrap;
@@ -174,7 +211,6 @@ body {
 }
 .user-info > img {
   width: 100px;
-  height: 100px;
   border-radius: 10px;
 }
 .review-content {

@@ -33,6 +33,7 @@ const CompanyModal = props => {
             {cats.join(", ")}
           </p>
         </div>
+        <div className="company-photos">{photos}</div>
         <div className="company-info">
           <p className="secondary-color">
             {business.display_phone ? business.display_phone : null}

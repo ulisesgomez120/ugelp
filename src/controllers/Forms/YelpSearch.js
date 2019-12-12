@@ -11,13 +11,13 @@ export default class YelpSearch extends Component {
           type="text"
           name="term-search"
           id="term-search"
-          placeholder="Food"
+          placeholder="Food, Bar, Bowling ..."
         />
         <input
           type="text"
           name="location-search"
           id="location-search"
-          placeholder="Irvine, CA"
+          placeholder="City, State ..."
         />
 
         <button type="submit" className="search-button">

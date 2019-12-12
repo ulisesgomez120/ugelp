@@ -3,7 +3,12 @@ import Star from "../Star/Star";
 const Result = props => {
   const cats = props.categories.map(cat => cat.title);
   return (
-    <article className="result-card" onClick={props.click}>
+    <article
+      className="result-card"
+      id={props.businessId}
+      onClick={props.openModal}
+      tabIndex="0"
+    >
       <div className="company-details">
         <img src={props.imgUrl} alt="a business" />
         <div>

@@ -12,6 +12,7 @@ class GoogleMap extends Component {
       markers = this.context.results.map(business => {
         return (
           <Marker
+            businessId={business.id}
             key={business.id}
             name={business.name}
             lat={business.coordinates.latitude}
@@ -23,7 +24,7 @@ class GoogleMap extends Component {
     return (
       <GoogleMapReact
         style={{
-          width: "45%",
+          width: "40%",
           height: "100%",
           margin: "0px",
           padding: "0px",
@@ -34,7 +35,7 @@ class GoogleMap extends Component {
           key: process.env.REACT_APP_GOOGLE_KEY,
           language: "en"
         }}
-        defaultZoom={12}
+        defaultZoom={11}
         defaultCenter={{ lat: 33.6846, lng: -117.8265 }}
         center={{ lat: this.props.lat, lng: this.props.lng }}
       >

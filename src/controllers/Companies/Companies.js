@@ -12,8 +12,8 @@ export default class Companies extends Component {
       resultsJsx = this.context.results.map(business => {
         return (
           <Result
-            click={() => this.context.modalHandler(business.id)}
             key={business.id}
+            businessId={business.id}
             name={business.name}
             imgUrl={business.image_url}
             address={business.location.address1}
@@ -22,6 +22,7 @@ export default class Companies extends Component {
             price={business.price}
             revCount={business.review_count}
             categories={business.categories}
+            openModal={() => this.context.modalHandler(business.id)}
           />
         );
       });
@@ -36,11 +37,14 @@ export default class Companies extends Component {
           resultsJsx
         ) : (
           <div className="loading-container">
-            <img src="../../images/gif/loading-arrow.gif" />
+            <img src="../../images/gif/loading-arrow.gif" alt="loading" />
           </div>
         )}
-        <div>
-          <button onClick={() => this.context.callNext20()}>
+        <div className="get-next-container">
+          <button
+            className="get-next-btn"
+            onClick={() => this.context.getNextResults()}
+          >
             Load 20 More
           </button>
         </div>
