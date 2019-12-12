@@ -112,6 +112,26 @@ class App extends Component {
       });
     });
   };
+  callNext20 = () => {
+    fetch(
+      `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&offset=20`,
+      {
+        headers: {
+          Authorization: process.env.REACT_APP_YELP_KEY
+        }
+      }
+    )
+      .then(res => res.json())
+      .then(jsonRes => {
+        const copyResultState = [...this.state.results];
+        this.setState({
+          results: [...copyResultState, ...jsonRes["businesses"]]
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
   render() {
     return (
       <div className="container">

@@ -39,6 +39,11 @@ export default class Companies extends Component {
             <img src="../../images/gif/loading-arrow.gif" />
           </div>
         )}
+        <div>
+          <button onClick={() => this.context.callNext20()}>
+            Load 20 More
+          </button>
+        </div>
       </section>
     );
   }
