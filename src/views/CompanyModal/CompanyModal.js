@@ -3,7 +3,7 @@ import Review from "../Review/Review";
 import Star from "../Star/Star";
 const CompanyModal = props => {
   const { business, reviews } = props;
-  const cats = business.categories.map(cat => cat.title);
+  const categories = business.categories.map(cat => cat.title);
   const photos = business.photos.map((imgUrl, index) => {
     return <img key={index} src={imgUrl} alt="business" />;
   });
@@ -30,7 +30,7 @@ const CompanyModal = props => {
           </div>
           <p className="general-desc secondary-color">
             {business.price ? business.price + " - " : null}
-            {cats.join(", ")}
+            {categories.join(", ")}
           </p>
         </div>
         <div className="company-photos">{photos}</div>

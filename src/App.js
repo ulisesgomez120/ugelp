@@ -12,18 +12,18 @@ class App extends Component {
   state = {
     results: [],
     term: "food",
-    location: "Irvine,CA",
+    location: "Austin,TX",
     showModal: false,
     singleBusiness: undefined,
     singleBusinessReviews: undefined,
-    mapLat: 33.6846,
-    mapLng: -117.8265,
+    mapLat: 30.2672,
+    mapLng: -97.7431,
     emptySearch: null
   };
 
   componentDidMount() {
     fetch(
-      `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=food&location=Irvine,CA`,
+      `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${this.state.term}&location=${this.state.location}`,
       {
         headers: {
           Authorization: process.env.REACT_APP_YELP_KEY
