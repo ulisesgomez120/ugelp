@@ -6,22 +6,22 @@ export default class YelpSearch extends Component {
 
   render() {
     return (
-      <form onSubmit={this.context.search} id="yelp-search">
+      <form onSubmit={this.context.search} id='yelp-search'>
         <input
-          type="text"
-          name="term-search"
-          id="term-search"
-          placeholder="Food, Bar, Bowling ..."
+          type='text'
+          name='term-search'
+          id='term-search'
+          placeholder='Food, Bar, Bowling ...'
         />
         <input
-          type="text"
-          name="location-search"
-          id="location-search"
-          placeholder="City, State ..."
+          type='text'
+          name='location-search'
+          id='location-search'
+          placeholder='City, State'
         />
 
-        <button type="submit" className="search-button">
-          <FaSearch className="search-svg" />
+        <button type='submit' className='search-button'>
+          <FaSearch className='search-svg' />
         </button>
       </form>
     );
