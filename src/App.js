@@ -46,34 +46,24 @@ class App extends Component {
     };
   }
   modalHandler = async (id) => {
-    const singleBusiness = fetch(`https://api.yelp.com/v3/businesses/${id}`, {
-      headers: {
-        Authorization: process.env.REACT_APP_YELP_KEY,
-      },
+    fetch("/.netlify/functions/getBusiness", {
+      method: "POST",
+      body: JSON.stringify({
+        id,
+      }),
     })
       .then((res) => res.json())
+      .then((jsonRes) => {
+        const { business, reviews } = jsonRes;
+        this.setState({
+          showModal: true,
+          singleBusiness: business,
+          singleBusinessReviews: reviews,
+        });
+      })
       .catch((err) => {
         console.log(err);
       });
-    const singleBusinessReviews = fetch(
-      `https://api.yelp.com/v3/businesses/${id}/reviews`,
-      {
-        headers: {
-          Authorization: process.env.REACT_APP_YELP_KEY,
-        },
-      }
-    )
-      .then((res) => res.json())
-      .catch((err) => {
-        console.log(err);
-      });
-    await Promise.all([singleBusiness, singleBusinessReviews]).then((value) => {
-      this.setState({
-        showModal: true,
-        singleBusiness: value[0],
-        singleBusinessReviews: value[1]["reviews"],
-      });
-    });
   };
 
   searchHandler = async (event) => {

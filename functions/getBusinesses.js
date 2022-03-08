@@ -1,7 +1,5 @@
-// const axios = require("axios");
-// require("dotenv").config();
-
-const { default: axios } = require("axios");
+const axios = require("axios");
+require("dotenv").config();
 
 const headers = {
   "Access-Control-Allow-Origin": "*",
